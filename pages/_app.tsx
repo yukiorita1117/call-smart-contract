@@ -2,9 +2,6 @@ import React from "react";
 import type { AppProps } from "next/app";
 import { ChakraProvider, localStorageManager } from "@chakra-ui/react";
 
-import "../styles/globals.css";
-import "react-notifications/lib/notifications.css";
-
 import { Web3ReactProvider } from "@web3-react/core";
 import { Web3Provider } from "@ethersproject/providers";
 
