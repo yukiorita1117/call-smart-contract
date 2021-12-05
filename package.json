@@ -7,6 +7,9 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@chakra-ui/react": "^1.7.2",
+    "@ethersproject/providers": "^5.5.1",
+    "@web3-react/core": "^6.1.9",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
