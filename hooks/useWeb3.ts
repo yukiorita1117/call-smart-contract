@@ -3,6 +3,7 @@ import { useWeb3React } from "@web3-react/core";
 
 import { injected } from "../lib/web3/connectors";
 
+// TODO 何してる関数？？？？？
 export function useEagerConnect() {
   const { activate, active } = useWeb3React();
 
@@ -18,9 +19,9 @@ export function useEagerConnect() {
         setTried(true);
       }
     });
-  }, []); // intentionally only running on mount (make sure it's only mounted once :))
+  }, []); // 意図的にマウント時のみ実行する（マウントは一度だけにしてください :)
 
-  // if the connection worked, wait until we get confirmation of that to flip the flag
+  // 接続がうまくいった場合は、フラグを立てるためにその確認が取れるまで待つ
   useEffect(() => {
     if (!tried && active) {
       setTried(true);
@@ -30,6 +31,7 @@ export function useEagerConnect() {
   return tried;
 }
 
+// TODO 何してる関数？？？？？
 export function useInactiveListener(suppress = false) {
   const { active, error, activate } = useWeb3React();
 
