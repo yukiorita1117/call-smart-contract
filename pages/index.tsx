@@ -14,29 +14,25 @@ import TODOABI from "../lib/abi/todo.json";
 import { ethers } from "ethers";
 const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || "";
 
-const IndexPage = () => {
+const IndexPage: React.FC = () => {
   const { activate, account, library } = useWeb3React<Web3Provider>();
 
   const [task, setTask] = useState("");
-  const [isMinting, setIsMinting] = useState(false);
 
   const submitHandler = async () => {
-    if (!library || !account || isMinting) return;
+    if (!injected.supportedChainIds) return;
 
-    activate(injected).then(async () => {});
-
-    setIsMinting(true);
-
-    if (library) {
-      const contract = new ethers.Contract(
-        contractAddress,
-        TODOABI,
-        library.getSigner()
-      );
-      await contract.functions.TodoCreate(contractAddress, task);
-    } else return;
-
-    setIsMinting(false);
+    activate(injected).then(async () => {
+      if (library) {
+        const contract = new ethers.Contract(
+          contractAddress,
+          TODOABI,
+          library.getSigner()
+        );
+        console.log("333333333", task);
+        await contract.functions.TodoCreate(contractAddress, task);
+      } else return;
+    });
   };
 
   return (
