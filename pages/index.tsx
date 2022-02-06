@@ -22,7 +22,7 @@ const IndexPage: React.FC = () => {
   const [task, setTask] = useState("");
   const [taskList, setTaskList] = useState([""]);
 
-  // handle logic to recognize the connector currently being activated
+  // 現在アクティブになっているコネクターを認識するためのハンドルロジック
   const [activatingConnector, setActivatingConnector] = useState<any>();
   useEffect(() => {
     if (activatingConnector && activatingConnector === connector) {
@@ -68,10 +68,10 @@ const IndexPage: React.FC = () => {
     });
   }, [activatingConnector, connector]);
 
-  // handle logic to eagerly connect to the injected ethereum provider, if it exists and has granted access already
+  // 注入されたイーサリアムプロバイダーが存在し、すでにアクセスを許可している場合、イーサリアムに接続するためのロジックを処理する
   const triedEager = useEagerConnect();
 
-  // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
+  // 注入されたイーサリアムプロバイダー上の特定のイベントが存在する場合、そのイベントに反応して接続するロジックを処理する
   useInactiveListener(!triedEager || !!activatingConnector);
 
   // タスク追加の関数
@@ -84,7 +84,6 @@ const IndexPage: React.FC = () => {
     });
 
     if (!injected.supportedChainIds) return;
-    // if (!library || !account) return;
 
     activate(injected).then(async () => {
       if (library) {
